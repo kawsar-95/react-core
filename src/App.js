@@ -9,24 +9,29 @@ function App() {
     { name: 'Illustrator', price: '0.99$' },
     { name: 'PhotoShop2', price: '0.99$' }]
 
+  const productNames = [products.map(product => product.name)]
+  console.log(productNames);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-
         <Person name={heroes[0]} age="1000" address="London"></Person>
         <Person name={heroes[1]} age="100" address="Metropolis"></Person>
-        <p>I am a React Person...</p>
-        <Product product={products[0]}></Product>
-        <Product product={products[1]} ></Product>
+
+
+        <ul>
+          {heroes.map(heroes => (<li>{heroes}</li>))}
+          {products.map(products => (<li>{products.name}</li>))}
+        </ul>
+        {products.map(product => <Product product={product}></Product>)}
 
       </header> </div >
   );
 }
 function Person(props) {
   const personStyle = {
-    border: '2px solid red',
+    border: '2px solid lightYellow',
     margin: '10px',
     padding: '10px ',
     width: '400px'
@@ -42,7 +47,7 @@ function Product(props) {
   const productStyle = {
     border: '1px solid gray',
     borderRadius: '5px',
-    backgroundColor: 'lightSalmon',
+    backgroundColor: 'lightgray',
     height: '200px',
     width: '200px',
     float: 'left'
@@ -58,8 +63,4 @@ function Product(props) {
     </div>
   )
 }
-
-
-
-
 export default App;
