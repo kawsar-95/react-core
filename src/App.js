@@ -3,33 +3,31 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  // var person = {
-  //   name: "The Godfather",
-  //   job: "Mafia"
-  // }
-  // var person2 = {
-  //   name: "the Terminator",
-  //   job: "Robot"
-  // }
-  // var style = {
-  //   color: 'red',
-  //   backgroundColor: 'yellow'
-
-  // }
+  const Heroes = ['Henry Cavill', 'Ben Affleck', 'Arnold', 'stalone']
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Edit <code > src / App.js </code> and save to reload.</p>
-        {/* <h1 style={style}>Heading:{person.name + " " + person.job}</h1>
-        <h3 style={{ backgroundColor: 'cyan', color: 'yellow' }}> heading:{person2.name + " " + person2.job}</h3> */}
-
-
-
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React </a> </header> </div>
+        <Person name={Heroes[0]} age="1000" address="London"></Person>
+        <Person name={Heroes[1]} age="100" address="Metropolis"></Person>
+        <p>I am a React Person...</p>
+      </header> </div >
   );
+}
+function Person(props) {
+  const personStyle = {
+    border: '2px solid red',
+    margin: '10px',
+    padding: '10px ',
+    width: '400px'
+  }
+  return (
+    <div style={personStyle}>
+      <h1 >My Name:{props.name}</h1>
+      <h3>My Age:{props.age}</h3>
+      <h3>My Address:{props.address}</h3>
+    </div>)
 }
 
 export default App;
