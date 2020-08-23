@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,10 +15,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-
         <Person name={heroes[0]} age="1000" address="London"></Person>
         <Person name={heroes[1]} age="100" address="Metropolis"></Person>
 
+        <Counter></Counter>
+        <users>
+
+        </users>
 
         <ul>
           {heroes.map(heroes => (<li>{heroes}</li>))}
@@ -28,6 +31,41 @@ function App() {
 
       </header> </div >
   );
+}
+function Users() {
+  const [users, setUsers] = useState([]);
+  const useEffect (() => {
+    // console.log('calling Effect');
+    fetch('https://jsonplaceholder.typicode.com/users/')
+      .then(response => response.json())
+      .then(data => setUsers(data));
+
+  }, [])
+  return (
+    <div>
+      <h2>Dynamic Users:{users.length}</h2>
+
+      {
+        <ul>
+          users.map(user =>  <li>{user.name}{user.email}{user.phone}</li>);
+        </ul>
+      }
+
+    </div>
+  )
+
+}
+
+function Counter() {
+  const [count, setCount] = useState(10);
+  const handleIncrease = () => setCount = count + 1;
+  return (
+    <div>
+      <h1>Count :{count}</h1>
+      <button onMouseMove={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  )
 }
 function Person(props) {
   const personStyle = {
