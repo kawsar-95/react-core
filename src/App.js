@@ -19,9 +19,7 @@ function App() {
         <Person name={heroes[1]} age="100" address="Metropolis"></Person>
 
         <Counter></Counter>
-        <users>
-
-        </users>
+        <users></users>
 
         <ul>
           {heroes.map(heroes => (<li>{heroes}</li>))}
@@ -34,23 +32,18 @@ function App() {
 }
 function Users() {
   const [users, setUsers] = useState([]);
-  const useEffect (() => {
-    // console.log('calling Effect');
+  useEffect (() => {
     fetch('https://jsonplaceholder.typicode.com/users/')
       .then(response => response.json())
       .then(data => setUsers(data));
 
   }, [])
   return (
-    <div>
+    <div className=Users>
       <h2>Dynamic Users:{users.length}</h2>
-
       {
-        <ul>
-          users.map(user =>  <li>{user.name}{user.email}{user.phone}</li>);
-        </ul>
+          users.map(user => <user name={user.name} email={user.email} phone={user.phone}></user>);
       }
-
     </div>
   )
 
